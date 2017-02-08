@@ -35,27 +35,4 @@ def compressText():
 compressButton = Button(master, text = "Compress", command = compressText)
 compressButton.pack()
 
-
-
 mainloop()
-
-'''
-scanNetworks = Button(master, text = "Scan For Networks", command=scanForNetworks)
-scanNetworks.pack()
-
-wifiNetworksLabel = Label(master, text="WiFi Networks")
-wifiNetworksLabel.pack()
-
-networksList = Listbox(master)
-networksList.pack()
-for k in range(len(networks)):
-    networksList.insert(k, networks[k])
-
-
-S = Scrollbar(root)
-T = Text(root, height=4, width=50)
-S.pack(side=RIGHT, fill=Y)
-T.pack(side=LEFT, fill=Y)
-S.config(command=T.yview)
-T.config(yscrollcommand=S.set)
-'''
