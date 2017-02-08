@@ -1,10 +1,10 @@
 from random import *
 import sys
-def getWordFrequency(inputArray):
+def getWordFrequency(inputArray, minLength):
     wordCount = []
     for i in range(len(inputArray)):
         word = inputArray[i]
-        if len(word) > 1:
+        if len(word) >= minLength: #change this number for minimun number of characters
             # first run
             if len(wordCount) == 0:
                 wordInfo = [word, 1]
@@ -24,10 +24,10 @@ def getWordFrequency(inputArray):
                     wordSet = [word, 1]
                     wordCount.append(wordSet)
     return wordCount
-def getWordsToReplace(frequencyArray):
+def getWordsToReplace(frequencyArray, minOcc):
     wordsToReplace = []
     for k in range(len(frequencyArray)):
-        if frequencyArray[k][1] > 0: #change this zero to a one to include everything
+        if frequencyArray[k][1] >= minOcc: #change this number for minium number of occurances
             wordsToReplace.append(frequencyArray[k][0])
     return wordsToReplace
 
@@ -63,9 +63,9 @@ def joinArray(array):
     return string
 
 
-def compress(inputArray):
-    wordFrequency = getWordFrequency(inputArray)
-    wordsToReplace = getWordsToReplace(wordFrequency)
+def compress(inputArray, minOcc, minLength):
+    wordFrequency = getWordFrequency(inputArray, minLength)
+    wordsToReplace = getWordsToReplace(wordFrequency, minOcc)
     compressedArray = substituteChars(wordsToReplace, inputArray)
     compressedText = joinArray(compressedArray)
     return compressedText
